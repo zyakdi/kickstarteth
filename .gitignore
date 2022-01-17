@@ -3,3 +3,4 @@ node_modules
 ethereum/build
 .next
 ADDRESS
+next.config.js

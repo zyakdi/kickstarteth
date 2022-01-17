@@ -1,11 +1,5 @@
 import React from 'react'
 
-const Test = props => {
-    return (
-        <div>
-            Hey
-        </div>
-    )
+export default () => {
+    return <h1>Welcome to the show page !</h1>
 }
-
-export default Test
