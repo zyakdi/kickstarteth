@@ -21,18 +21,23 @@ export default ({campaigns}) => {
   
     return (
       <div>
-        <link
-            async
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/semantic-ui@2/dist/semantic.min.css"
-          />
-        {renderCampaigns()}
-        <Button content="Create campaign" icon="add circle" primary />
+          <h3>Open Campaigns</h3>
+          <Link route="/campaigns/new">
+            <a>
+              <Button
+                floated="right"
+                content="Create Campaign"
+                icon="add circle"
+                primary
+              />
+            </a>
+          </Link>
+          {renderCampaigns()}
       </div>
     )
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps() {
     const campaigns = await factory.methods.getDeployedCampaigns().call()
     return {
       props: {

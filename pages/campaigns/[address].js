@@ -6,6 +6,7 @@ import ContributeForm from "../../components/ContributeForm";
 import { Link } from "../../routes";
 
 export default ({
+    address,
     balance,
     manager,
     minimumContribution,
@@ -82,11 +83,13 @@ export async function getServerSideProps({ query }) {
     const summary = await campaign.methods.getSummary().call();
 
     return {
-      address: query.address,
-      minimumContribution: summary[0],
-      balance: summary[1],
-      requestsCount: summary[2],
-      approversCount: summary[3],
-      manager: summary[4],
+        props: {
+            address: query.address,
+            minimumContribution: summary[0],
+            balance: summary[1],
+            requestsCount: summary[2],
+            approversCount: summary[3],
+            manager: summary[4],
+        }
     };
 }
