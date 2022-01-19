@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { Card, Grid, Button } from "semantic-ui-react";
-import Campaign from "../../ethereum/campaign";
-import web3 from "../../ethereum/web3";
-import ContributeForm from "../../components/ContributeForm";
-import { Link } from "../../routes";
+import Campaign from "../../../ethereum/campaign";
+import web3 from "../../../ethereum/web3";
+import ContributeForm from "../../../components/ContributeForm";
+import { Link } from "../../../routes";
 
 export default ({
     address,

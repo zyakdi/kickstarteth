@@ -1,21 +1,21 @@
 import React from "react";
 import { Button, Table } from "semantic-ui-react";
-import { Link } from "../../../routes";
-import Campaign from "../../../ethereum/campaign";
-import RequestRow from "../../../components/RequestRow";
+import { Link } from "../../../../routes";
+import Campaign from "../../../../ethereum/campaign";
+import RequestRow from "../../../../components/RequestRow";
 
 export default ({ address, requests, requestCount, approversCount }) => {
     const renderRows = () => {
         return requests.map((request, index) => {
-        return (
-            <RequestRow
-            key={index}
-            id={index}
-            request={request}
-            address={address}
-            approversCount={approversCount}
-            />
-        );
+            return (
+                <RequestRow
+                    key={index}
+                    id={index}
+                    request={request}
+                    address={address}
+                    approversCount={approversCount}
+                />
+            );
         });
     }
 
@@ -42,7 +42,7 @@ export default ({ address, requests, requestCount, approversCount }) => {
                 <HeaderCell>Finalize</HeaderCell>
             </Row>
             </Header>
-            <Body>{this.renderRows()}</Body>
+            <Body>{renderRows()}</Body>
         </Table>
         <div>Found {requestCount} requests.</div>
         </div>
@@ -62,5 +62,9 @@ export async function getServerSideProps({ query }) {
           return campaign.methods.requests(index).call();
         })
     );
-    return { address, requests, requestCount, approversCount };
+    return { 
+        props: {
+            address, requests, requestCount, approversCount 
+        }
+    }
 }
