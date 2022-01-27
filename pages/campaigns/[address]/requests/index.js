@@ -64,7 +64,7 @@ export async function getServerSideProps({ query }) {
     );
     return { 
         props: {
-            address, requests, requestCount, approversCount 
+            address, requests: JSON.parse(JSON.stringify(requests)), requestCount, approversCount 
         }
     }
 }
